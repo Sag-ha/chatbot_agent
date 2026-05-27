@@ -1,0 +1,37 @@
+# =============================================================================
+# requirements.txt — Python dependencies
+#
+# Install everything with:
+#   pip install -r requirements.txt
+#
+# Versions are pinned to ranges (not exact) so minor updates (bug fixes) are
+# allowed, but major breaking changes are blocked.
+# =============================================================================
+
+# ── Web framework ──────────────────────────────────────────────────────────────
+fastapi>=0.111.0,<1.0.0          # API framework
+uvicorn[standard]>=0.29.0,<1.0.0 # ASGI server that runs FastAPI
+
+# ── GCP — Vertex AI (Gemini LLM + Embeddings) ─────────────────────────────────
+langchain-google-vertexai>=1.0.6,<3.0.0   # Gemini + VertexAI embeddings via LangChain
+google-cloud-aiplatform>=1.50.0,<2.0.0    # Vertex AI SDK (required by above)
+
+# ── GCP — Cloud SQL Vector Store ──────────────────────────────────────────────
+langchain-google-cloud-sql-pg>=0.6.0,<1.0.0  # Cloud SQL PostgreSQL + pgvector support
+google-cloud-sql-connector[asyncpg]>=1.9.0,<2.0.0  # Secure Cloud SQL connection driver
+asyncpg>=0.29.0,<1.0.0                       # Async PostgreSQL driver (required by above)
+
+# ── GCP — Cloud Storage (for reading PDFs) ────────────────────────────────────
+google-cloud-storage>=2.16.0,<3.0.0
+
+# ── LangChain core ────────────────────────────────────────────────────────────
+langchain>=0.2.0,<0.4.0          # Core LangChain abstractions
+langchain-core>=0.2.0,<0.4.0     # Runnables, prompts, output parsers
+langchain-community>=0.2.0,<0.4.0 # PyPDFLoader lives here
+
+# ── PDF reading ───────────────────────────────────────────────────────────────
+pypdf>=4.0.0,<5.0.0              # Reads text from PDF files (used by PyPDFLoader)
+
+# ── Configuration management ──────────────────────────────────────────────────
+pydantic-settings>=2.2.0,<3.0.0  # Reads .env file into typed Settings class
+pydantic>=2.7.0,<3.0.0           # Data validation for API request/response models
